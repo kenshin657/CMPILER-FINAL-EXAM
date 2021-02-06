@@ -28,9 +28,9 @@ public class LexicalAnalyzer {
         return inputArray;
     }
 
-    public static HashMap<Integer, Lex> Tokenize() {
+    public static ArrayList<Lex> Tokenize() {
         ArrayList<String> inputArray = readInput();
-        HashMap<Integer, Lex> lexical = new HashMap<Integer, Lex>();
+        ArrayList<Lex> lexical = new ArrayList<Lex>();
 
         int temp = 0;
         for (String s : inputArray) {
@@ -52,14 +52,13 @@ public class LexicalAnalyzer {
             }
 
             lex.setTokenizedInput(sb.toString());
-            lexical.put(temp, lex);
+
+            lexical.add(lex);
         }
 
-        int inp = 0;
-        for (int i = 1; i <= lexical.size(); i++) {
-            inp++;
+        for (int i = 0; i < lexical.size(); i++) {
             Lex lex1 = lexical.get(i);
-            System.out.println("[" + inp + "]: " + "Lexeme: " + lex1.getInputKey() + " Tokenized: " + lex1.getTokenizedInput());
+            System.out.println("[" + (i+1) + "]: " + "Lexeme: " + lex1.getInputKey() + " Tokenized: " + lex1.getTokenizedInput());
         }
 
         return lexical;
