@@ -7,8 +7,8 @@ public class Token {
         RPAREN,
         QUESTION,
         UNION,
-        TERMINAL,
-        TERMINALOP,
+        TERMINALS,
+        TERMINALSOP,
         ERROR,
     }
 
@@ -101,9 +101,9 @@ public class Token {
         }
 
     if (state == 1)
-        return TokenType.TERMINALOP;
+        return TokenType.TERMINALSOP;
     else if (state == 2)
-        return TokenType.TERMINALOP;
+        return TokenType.TERMINALSOP;
     else if (state == 3)
         return TokenType.EPSILON;
     else if (state == 4)
@@ -111,11 +111,11 @@ public class Token {
     else if (state == 5)
         return TokenType.RPAREN;
     else if (state == 6)
-        return TokenType.TERMINALOP;
+        return TokenType.TERMINALSOP;
     else if (state == 7)
         return TokenType.UNION;
     else if (state == 8)
-        return TokenType.TERMINAL;
+        return TokenType.TERMINALS;
     else if (state == 999)
         return TokenType.ERROR;
     else
