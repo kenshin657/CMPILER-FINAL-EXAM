@@ -13,4 +13,3 @@ a+ U b* U c? U E - ACCEPTED
 1234E - ACCEPTED
 1234? - ACCPETED
 1a* U 2*b U 3+c+ U 4+d? - ACCPETED
-Qax - REJECTED
