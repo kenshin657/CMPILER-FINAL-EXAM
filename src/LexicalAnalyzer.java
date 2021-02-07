@@ -68,10 +68,10 @@ public class LexicalAnalyzer {
             lexical.add(lex);
         }
 
-        for (int i = 0; i < lexical.size(); i++) {
+        /*for (int i = 0; i < lexical.size(); i++) {
             Lex lex1 = lexical.get(i);
             System.out.println("[" + (i+1) + "]: " + "Lexeme: " + lex1.getInputKey() + " Tokenized: " + lex1.getTokenizedInput());
-        }
+        }*/
 
         return lexical;
     }
