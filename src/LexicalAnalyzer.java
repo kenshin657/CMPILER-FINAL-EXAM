@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class LexicalAnalyzer {
 
@@ -37,21 +39,31 @@ public class LexicalAnalyzer {
             Lex lex = new Lex();
             temp++;
             String hashKey = s;
-            String removedSpace = s.replaceAll("\\s","");
+            String removedSpace = s;
+            removedSpace = removedSpace.replaceAll("\\*", " * ");
+            removedSpace = removedSpace.replaceAll("\\+", " + ");
+            removedSpace = removedSpace.replaceAll("\\?", " ? ");
+            removedSpace = removedSpace.replaceAll("\\(", "( ");
+            removedSpace = removedSpace.replaceAll("\\)", " )");
+            removedSpace = removedSpace.replaceAll("E", " E ");
+            removedSpace = removedSpace.replaceAll("  ", " ");
             lex.setInputKey(hashKey);
+
+            removedSpace = removedSpace.trim();
+            String[] strArr = removedSpace.split(" ");
 
             /*System.out.println("Hash key: " + hashKey);
             System.out.println("Removed Space: " + removedSpace);*/
 
-            char[] array = removedSpace.toCharArray();
-
             StringBuilder sb = new StringBuilder();
-            for (char c : array) {
-                Token token = new Token(Character.toString(c));
+            for (String str : strArr) {
+                Token token = new Token(str);
                 sb.append(token.tokenType + " ");
             }
 
             lex.setTokenizedInput(sb.toString());
+
+
 
             lexical.add(lex);
         }

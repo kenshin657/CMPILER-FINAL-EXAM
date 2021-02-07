@@ -8,6 +8,7 @@ public class Token {
         QUESTION,
         UNION,
         TERMINAL,
+        TERMINALOP,
         ERROR,
     }
 
@@ -22,6 +23,7 @@ public class Token {
 
     private static TokenType identifyToken(String word) {
         int state = 0; // start state
+        word = word.trim();
         char[] ch = word.toCharArray();
 
         for(char c : ch) {
@@ -83,8 +85,14 @@ public class Token {
                 case '7':
                 case '8':
                 case '9':
-                    state = 8;
-                    break;
+                    if (state == 0) {
+                        state = 8;
+                        break;
+                    }
+                    else if (state == 8) {
+                        state = 8;
+                        break;
+                    }
 
                 default:
                     state = 999; //deadstate
@@ -93,9 +101,9 @@ public class Token {
         }
 
     if (state == 1)
-        return TokenType.STAR;
+        return TokenType.TERMINALOP;
     else if (state == 2)
-        return TokenType.PLUS;
+        return TokenType.TERMINALOP;
     else if (state == 3)
         return TokenType.EPSILON;
     else if (state == 4)
@@ -103,7 +111,7 @@ public class Token {
     else if (state == 5)
         return TokenType.RPAREN;
     else if (state == 6)
-        return TokenType.QUESTION;
+        return TokenType.TERMINALOP;
     else if (state == 7)
         return TokenType.UNION;
     else if (state == 8)
