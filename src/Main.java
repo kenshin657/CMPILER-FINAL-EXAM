@@ -14,8 +14,8 @@ public class Main {
 
         /*lexes.clear();
         Lex lex = new Lex();
-        lex.setInputKey("E");
-        lex.setTokenizedInput("EPSILON EPSILON");
+        lex.setInputKey("E1234");
+        lex.setTokenizedInput("EPSILON TERMINALS");
         lexes.add(lex);*/
 
         ArrayList<String> outputs = SyntaxAnalyzer.ll1Parse(lexes);

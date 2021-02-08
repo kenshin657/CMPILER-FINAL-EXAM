@@ -36,10 +36,13 @@ public class SyntaxAnalyzer {
                 String val = tmpStack.pop();
                 if (val.equals("EPSILON")) {
                     epsTest = true;
+                } else if (val.equals("$")) {
+                    continue;
+                }
+                else {
+                    epsTest = false;
                     break;
                 }
-                else
-                    epsTest = false;
             }
             if (epsTest) {
                 System.out.println("ACCPETEDz");
