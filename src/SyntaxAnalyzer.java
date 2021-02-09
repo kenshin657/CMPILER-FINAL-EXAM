@@ -44,7 +44,7 @@ public class SyntaxAnalyzer {
                         //System.out.println();
                         if (ruleTop.equals("$") && inputTop.equals("$")) {
                             //System.out.println("ACCEPTED");
-                            input = input + " - ACCPETED";
+                            input = input + " - ACCEPT";
                             output.add(input);
                             break;
                         } else
@@ -55,7 +55,7 @@ public class SyntaxAnalyzer {
                         continue;
                     }
                     else {
-                        input = input + " - REJECTED";
+                        input = input + " - REJECT";
                         output.add(input);
                         break;
                     }
@@ -89,7 +89,7 @@ public class SyntaxAnalyzer {
                 }
                 if (!isExisting) {
                     //System.out.println("REJECTED");
-                    input = input + " - REJECTED";
+                    input = input + " - REJECT";
                     output.add(input);
                     break;
                 }
