@@ -44,13 +44,19 @@ public class LexicalAnalyzer {
             removedSpace = removedSpace.replaceAll("\\+", " + ");
             removedSpace = removedSpace.replaceAll("\\?", " ? ");
             removedSpace = removedSpace.replaceAll("\\(", "( ");
-            removedSpace = removedSpace.replaceAll("\\)", " )");
+            removedSpace = removedSpace.replaceAll("\\)", " ) ");
             removedSpace = removedSpace.replaceAll("E", " E ");
+            removedSpace = removedSpace.replaceAll("U", " U ");
             removedSpace = removedSpace.replaceAll("  ", " ");
+            removedSpace = removedSpace.replaceAll("  ", " ");
+
+            //System.out.println(removedSpace);
+
             lex.setInputKey(hashKey);
 
             removedSpace = removedSpace.trim();
             String[] strArr = removedSpace.split(" ");
+            //System.out.println(Arrays.toString(strArr));
 
             /*System.out.println("Hash key: " + hashKey);
             System.out.println("Removed Space: " + removedSpace);*/

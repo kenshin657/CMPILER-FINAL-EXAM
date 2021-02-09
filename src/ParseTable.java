@@ -21,42 +21,46 @@ public class ParseTable {
 
         String nt0 = "start";
         Rules rules = new Rules();
-        rules.addRules("epsilon", "epsilon");
-        rules.addRules("LPAREN", "LPAREN start RPAREN to");
-        rules.addRules("TERMINALS", "tm");
+        rules.addRules("EPSILON", "ft un");
+        rules.addRules("LPAREN", "ft un");
+        rules.addRules("TERMINALS", "ft un");
         pTable.put(nt0, rules);
 
-        String nt1 = "tm";
+        String nt1 = "ft";
         rules = new Rules();
-        rules.addRules("TERMINALS", "TERMINALS to");
+        rules.addRules("EPSILON", "EPSILON");
+        rules.addRules("LPAREN", "tm");
+        rules.addRules("TERMINALS", "tm");
         pTable.put(nt1, rules);
 
-        String nt2 = "to";
+        String nt2 = "tm";
         rules = new Rules();
-        rules.addRules("RPAREN", "''");
-        rules.addRules("TERMINALSOP", "TERMINALSOP re");
-        rules.addRules("UNION", "un");
-        rules.addRules("$", "''");
+        rules.addRules("LPAREN", "pa tops");
+        rules.addRules("TERMINALS", "pa tops");
         pTable.put(nt2, rules);
 
-        String nt3 = "un";
+        String nt3 = "pa";
         rules = new Rules();
-        rules.addRules("UNION", "UNION ep");
+        rules.addRules("LPAREN", "LPAREN start RPAREN");
+        rules.addRules("TERMINALS", "TERMINALS");
         pTable.put(nt3, rules);
 
-        String nt4 = "ep";
+        String nt4 = "un";
         rules = new Rules();
-        rules.addRules("LPAREN", "start");
-        rules.addRules("TERMINALS", "start");
-        rules.addRules("EPSILON", "EPSILON");
+        rules.addRules("LPAREN", "tm un");
+        rules.addRules("RPAREN", "''");
+        rules.addRules("TERMINALS", "tm un");
+        rules.addRules("UNION", "UNION ft un");
+        rules.addRules("$", "''");
         pTable.put(nt4, rules);
 
-        String nt5 = "re";
+        String nt5 = "tops";
         rules = new Rules();
-        rules.addRules("LPAREN", "start");
-        rules.addRules("TERMINALS", "start");
+        rules.addRules("LPAREN", "''");
         rules.addRules("RPAREN", "''");
-        rules.addRules("UNION", "un");
+        rules.addRules("TERMINALS", "''");
+        rules.addRules("UNION", "''");
+        rules.addRules("TERMINALSOP", "TERMINALSOP");
         rules.addRules("$", "''");
         pTable.put(nt5, rules);
 

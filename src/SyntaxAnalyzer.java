@@ -8,7 +8,7 @@ public class SyntaxAnalyzer {
         HashMap<String, Rules> pTable = parseTable.getParseTable();
         ArrayList<String> output = new ArrayList<String>();
 
-        System.out.println("SIZE: " + lexicals.size());
+        //System.out.println("SIZE: " + lexicals.size());
 
         for (Lex lex : lexicals) {
             String input = lex.getInputKey();
@@ -28,43 +28,22 @@ public class SyntaxAnalyzer {
                 inputStack.push(tmp.get(i));
             }
 
-            System.out.println("Initial Input Stack: " + inputStack);
-
-            boolean epsTest = false;
-            Stack<String > tmpStack = (Stack<String>) inputStack.clone();
-            while (!tmpStack.isEmpty()) {
-                String val = tmpStack.pop();
-                if (val.equals("EPSILON")) {
-                    epsTest = true;
-                } else if (val.equals("$")) {
-                    continue;
-                }
-                else {
-                    epsTest = false;
-                    break;
-                }
-            }
-            if (epsTest) {
-                System.out.println("ACCPETEDz");
-                input = input + " - ACCEPTED";
-                output.add(input);
-                continue;
-            }
+            //System.out.println("Initial Input Stack: " + inputStack);
 
             while (!inputStack.isEmpty()) {
                 String ruleTop = ruleStack.peek();
                 String inputTop = inputStack.peek();
 
-                System.out.println("Top Rule Stack: " + ruleTop);
-                System.out.println("Top Input Stack: " + inputTop);
+                /*System.out.println("Top Rule Stack: " + ruleTop);
+                System.out.println("Top Input Stack: " + inputTop);*/
 
                 if (ruleTop.toUpperCase().equals(ruleTop)) {
                     if (ruleTop.equals(inputTop)) {
                         ruleStack.pop();
                         inputStack.pop();
-                        System.out.println();
+                        //System.out.println();
                         if (ruleTop.equals("$") && inputTop.equals("$")) {
-                            System.out.println("ACCEPTED");
+                            //System.out.println("ACCEPTED");
                             input = input + " - ACCPETED";
                             output.add(input);
                             break;
@@ -72,11 +51,10 @@ public class SyntaxAnalyzer {
                             continue;
                     } else if (ruleTop.equals("''")) {
                         ruleStack.pop();
-                        System.out.println();
+                        //System.out.println();
                         continue;
                     }
                     else {
-                        System.out.println("ERROR BISH");
                         input = input + " - REJECTED";
                         output.add(input);
                         break;
@@ -87,9 +65,9 @@ public class SyntaxAnalyzer {
 
                 boolean isExisting = true;
                 for (Map.Entry<String, String> hMap: rules.getRules().entrySet()) {
-                    System.out.println("TOP: " + hMap.getKey() + " InputTop: " + inputTop);
+                    //System.out.println("TOP: " + hMap.getKey() + " InputTop: " + inputTop);
                     if (hMap.getKey().equals(inputTop)) {
-                        System.out.println("REACHED HERE");
+                        //System.out.println("REACHED HERE");
                         String replace = hMap.getValue();
 
                         String[] tmpArr = replace.split(" ");
@@ -99,9 +77,9 @@ public class SyntaxAnalyzer {
                         for (int i = 0; i < lst.size(); i++) {
                             ruleStack.push(lst.get(i));
                         }
-                        System.out.println("RuleStack: " + ruleStack);
+                        /*System.out.println("RuleStack: " + ruleStack);
                         System.out.println("Input Stack: " + inputStack);
-                        System.out.println();
+                        System.out.println();*/
 
                         isExisting = true;
                         break;
@@ -110,7 +88,7 @@ public class SyntaxAnalyzer {
                         isExisting = false;
                 }
                 if (!isExisting) {
-                    System.out.println("REJECTED");
+                    //System.out.println("REJECTED");
                     input = input + " - REJECTED";
                     output.add(input);
                     break;
